@@ -1,0 +1,31 @@
+### 예약을 생성한다.
+POST {{base-uri}}/reservations
+Content-Type: application/json
+
+{
+  "startDate": "12/24/2023",
+  "endDate": "12/31/2023",
+  "placeId": "1234a",
+  "invoiceId": "5678a"
+}
+
+### 예약을 조회한다.
+GET {{base-uri}}/reservations
+Content-Type: application/json;
+
+### 단일 예약을 조회한다.
+@id = 6587e5168f60b23daac1e587
+GET {{base-uri}}/reservations/{{id}}
+Content-Type: application/json;
+
+### 예약을 변경한다.
+PATCH {{base-uri}}/reservations/{{id}}
+Content-Type: application/json;
+
+{
+  "endDate": "12/31/2023"
+}
+
+### 예약을 삭제한다.
+DELETE {{base-uri}}/reservations/{{id}}
+Content-Type: application/json;
