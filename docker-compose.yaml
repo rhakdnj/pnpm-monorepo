@@ -9,6 +9,10 @@ services:
       - 27017:27017
     volumes:
       - ~/mongodb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${USER_NAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${PASSWORD}
+      - MONGO_INITDB_DATABASE=${DATABASE}
 
   mongo-express:
     image: mongo-express
