@@ -1,0 +1,9 @@
+### 유저를 생성한다.
+POST {{auth-uri}}/users
+Content-Type: application/json
+
+# password: IsStrongPassword Decorator
+{
+  "email": "test@email.com",
+  "password": "Test12345!"
+}

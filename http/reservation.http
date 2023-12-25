@@ -1,5 +1,5 @@
 ### 예약을 생성한다.
-POST {{base-uri}}/reservations
+POST {{reservation-uri}}/reservations
 Content-Type: application/json
 
 {
@@ -10,16 +10,16 @@ Content-Type: application/json
 }
 
 ### 예약을 조회한다.
-GET {{base-uri}}/reservations
+GET {{reservation-uri}}/reservations
 Content-Type: application/json;
 
 ### 단일 예약을 조회한다.
 @id = 6587e5168f60b23daac1e587
-GET {{base-uri}}/reservations/{{id}}
+GET {{reservation-uri}}/reservations/{{id}}
 Content-Type: application/json;
 
 ### 예약을 변경한다.
-PATCH {{base-uri}}/reservations/{{id}}
+PATCH {{reservation-uri}}/reservations/{{id}}
 Content-Type: application/json;
 
 {
@@ -27,5 +27,5 @@ Content-Type: application/json;
 }
 
 ### 예약을 삭제한다.
-DELETE {{base-uri}}/reservations/{{id}}
+DELETE {{reservation-uri}}/reservations/{{id}}
 Content-Type: application/json;
