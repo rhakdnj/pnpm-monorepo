@@ -1,0 +1,19 @@
+### 유저를 생성한다.
+POST {{auth-uri}}/users
+Content-Type: application/json
+
+# password: IsStrongPassword Decorator
+{
+  "email": "test@email.com",
+  "password": "Test12345!"
+}
+
+### 유저가 로그인한다.
+POST {{auth-uri}}/auth/login
+Content-Type: application/json
+
+# Set-Cookie: Authentication=JWT_TOKEN; Path=/; Expires=Tue, 02 Jan 2024 11:19:00 GMT; HttpOnly
+{
+  "email": "test@email.com",
+  "password": "Test12345!"
+}
