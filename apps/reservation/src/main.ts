@@ -3,9 +3,11 @@ import { ReservationModule } from './reservation.module';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from 'nestjs-pino';
 import { ConfigService } from '@nestjs/config';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
     const app = await NestFactory.create(ReservationModule);
+    app.use(cookieParser());
     app.useGlobalPipes(
         new ValidationPipe({
             transform: true,
@@ -16,6 +18,6 @@ async function bootstrap() {
     );
     app.useLogger(app.get(Logger));
     const configService = app.get(ConfigService);
-    await app.listen(configService.get('PORT'));
+    await app.listen(configService.get('HTTP_PORT'));
 }
 bootstrap();

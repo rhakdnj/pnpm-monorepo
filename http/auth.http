@@ -17,3 +17,7 @@ Content-Type: application/json
   "email": "test@email.com",
   "password": "Test12345!"
 }
+
+
+### 유저를 조회한다.
+GET {{auth-uri}}/users
