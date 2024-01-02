@@ -1,5 +1,7 @@
 services:
   reservation:
+    depends_on:
+      - mongo
     build:
       context: .
       dockerfile: ./apps/reservation/Dockerfile
@@ -14,6 +16,8 @@ services:
     environment:
       TZ: Asia/Seoul
   auth:
+    depends_on:
+      - mongo
     build:
       context: .
       dockerfile: ./apps/auth/Dockerfile
@@ -23,6 +27,22 @@ services:
       - ./apps/auth/.env
     ports:
       - "3001:3001"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      TZ: Asia/Seoul
+  payment:
+    depends_on:
+      - mongo
+    build:
+      context: .
+      dockerfile: ./apps/payment/Dockerfile
+      target: development
+    command: pnpm run start:dev payment
+    env_file:
+      - ./apps/payment/.env
+    ports:
+      - "3003:3003"
     volumes:
       - .:/usr/src/app
     environment:
