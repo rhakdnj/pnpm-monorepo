@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Inject, Injectable } from '@nestjs/common';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { AUTH_CLIENT_TOKEN } from '@app/common/constant/service';
+import { AUTH_CLIENT_TOKEN } from '@app/common/constant/client-token';
 import { ClientProxy } from '@nestjs/microservices';
 import { UserDto } from '@app/common/dto';
 
