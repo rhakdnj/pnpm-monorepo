@@ -1,0 +1,24 @@
+steps:
+  # reservation
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/reservation/prod', '-f', 'apps/reservation/Dockerfile', '.' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/reservation/prod' ]
+
+  # auth
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/auth/prod', '-f', 'apps/auth/Dockerfile', '.' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/auth/prod' ]
+
+  # payment
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/payment/prod', '-f', 'apps/payment/Dockerfile', '.' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/payment/prod' ]
+
+  # notification
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/notification/prod', '-f', 'apps/notification/Dockerfile', '.' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-northeast3-docker.pkg.dev/nestjs-pnpm/notification/prod' ]
