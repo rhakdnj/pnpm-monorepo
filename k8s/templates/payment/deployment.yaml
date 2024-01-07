@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: payment
+  name: payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+      - image: chungjm0711/payment:latest
+        name: payment
+        env:
+          - name: TCP_PORT
+            value: '3001'
+          - name: NOTIFICATION_HOST
+            value: notification
+          - name: NOTIFICATION_PORT
+            value: '3000'
+        ports:
+          - containerPort: 3001
