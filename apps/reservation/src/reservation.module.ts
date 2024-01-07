@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ReservationController } from './reservation.controller';
 import { ReservationService } from './reservation.service';
-import { AUTH_CLIENT_TOKEN, DatabaseModule, LoggerModule, PAYMENT_CLIENT_TOKEN } from '@app/common';
+import { AUTH_CLIENT_TOKEN, DatabaseModule, HealthModule, LoggerModule, PAYMENT_CLIENT_TOKEN } from '@app/common';
 import { ReservationDocument, ReservationSchema } from './entity/reservation.schema';
 import { ReservationsRepository } from './reservation.repository';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -48,6 +48,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
                 inject: [ConfigService],
             },
         ]),
+        HealthModule,
     ],
     controllers: [ReservationController],
     providers: [ReservationService, ReservationsRepository],
