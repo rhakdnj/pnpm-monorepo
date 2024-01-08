@@ -15,7 +15,7 @@ spec:
         app: reservation
     spec:
       containers:
-      - image: chungjm0711/reservation:latest
+      - image: asia-northeast3-docker.pkg.dev/nestjs-pnpm/reservation/prod
         name: reservation
         env:
           - name: MONGODB_URI
