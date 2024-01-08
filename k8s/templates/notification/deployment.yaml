@@ -15,7 +15,7 @@ spec:
         app: notification
     spec:
       containers:
-      - image: chungjm0711/notification:latest
+      - image: asia-northeast3-docker.pkg.dev/nestjs-pnpm/notification/prod
         name: notification
         env:
           - name: TCP_PORT

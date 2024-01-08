@@ -15,7 +15,7 @@ spec:
         app: auth
     spec:
       containers:
-      - image: chungjm0711/auth:latest
+      - image: asia-northeast3-docker.pkg.dev/nestjs-pnpm/auth/prod
         name: auth
         env:
           - name: MONGODB_URI
