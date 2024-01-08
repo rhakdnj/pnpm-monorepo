@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin *.amazonaws.com
+  build:
+    commands:
+      - docker build -t reservation -f ./apps/reservation/Dockerfile .
+      - docker tag reservation *.amazonaws.com/reservation/prod
+
+      - docker build -t auth -f ./apps/auth/Dockerfile .
+      - docker tag auth *.amazonaws.com/auth/prod
+
+      - docker build -t payment -f ./apps/payment/Dockerfile .
+      - docker tag payment *.amazonaws.com/payment/prod
+
+      - docker build -t notification -f ./apps/notification/Dockerfile .
+      - docker tag notification *.amazonaws.com/notification/prod
+  post_build:
+    commands:
+      - docker push *.amazonaws.com/reservation/prod
+      - docker push *.amazonaws.com/auth/prod
+      - docker push *.amazonaws.com/payment/prod
+      - docker push *.amazonaws.com/notification/prod
