@@ -1,0 +1,51 @@
+# docker-compose up e2e
+services:
+  e2e:
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./spec:/usr/src/app/spec
+    environment:
+      TZ: Asia/Seoul
+    depends_on:
+      - reservation
+      - auth
+      - payment
+      - notification
+      - mongo
+  reservation:
+    image: chungjm0711/reservation-arm
+    env_file:
+      - ../apps/reservation/.env
+    ports:
+      - "3000:3000"
+    environment:
+      TZ: Asia/Seoul
+  auth:
+    image: chungjm0711/auth-arm
+    env_file:
+      - ../apps/auth/.env
+    ports:
+      - "3001:3001"
+    environment:
+      TZ: Asia/Seoul
+  payment:
+    image: chungjm0711/payment-arm
+    env_file:
+      - ../apps/payment/.env
+    ports:
+      - "3003:3003"
+    environment:
+      TZ: Asia/Seoul
+  notification:
+    image: chungjm0711/notification-arm
+    env_file:
+      - ../apps/notification/.env
+    ports:
+      - "3004:3004"
+    environment:
+      TZ: Asia/Seoul
+  mongo:
+    image: mongo
+    environment:
+      TZ: Asia/Seoul
